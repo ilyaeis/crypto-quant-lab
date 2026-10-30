@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+!recovery/crypto_quant_lab.cpython-312.pyc
+.venv/
+data/cache/
+recovery/work/
+docs/

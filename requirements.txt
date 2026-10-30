@@ -1,0 +1,8 @@
+# Python 3.12 (needed to check the recovered code against the original 3.12 bytecode;
+# the script itself should also run on newer Python versions)
+numpy==2.5.4
+pandas==3.1.0
+scipy==1.18.1
+matplotlib==3.11.2
+yfinance==1.7.0
+arch==8.0.0
