@@ -20,7 +20,7 @@ It starts with single-coin rules on BTC and ETH, and ends with a 6-coin portfoli
 
 ## Methods
 
-![Signal pipeline: drift, volatility targeting, seasonal scale, portfolio, regime gate](docs/signal_pipeline.svg)
+![Signal pipeline: drift, volatility targeting, seasonal scale, portfolio, regime gate](results/signal_pipeline.svg)
 
 - **Drift signal.** Over a rolling window (usually 60 days), compute the log-return mean `mu` and
   standard deviation `sigma`. The GBM drift is `mu - sigma^2 / 2`. Hold the coin when the drift is

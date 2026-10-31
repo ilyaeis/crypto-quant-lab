@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 190" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif">
+  <title id="t">Signal pipeline of the final model</title>
+  <desc id="d">Daily prices go through a drift signal, volatility targeting, a seasonal scale, inverse-variance portfolio weights and a BTC moving-average regime gate, then give the monthly return.</desc>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#555"/></marker></defs>
+  <g fill="#f4f6fa" stroke="#4a5a7a" stroke-width="1.5">
+    <rect x="10" y="40" width="150" height="90" rx="8"/>
+    <rect x="190" y="40" width="150" height="90" rx="8"/>
+    <rect x="370" y="40" width="150" height="90" rx="8"/>
+    <rect x="550" y="40" width="150" height="90" rx="8"/>
+    <rect x="730" y="40" width="160" height="90" rx="8"/>
+  </g>
+  <g stroke="#555" stroke-width="1.5" marker-end="url(#a)">
+    <line x1="160" y1="85" x2="188" y2="85"/><line x1="340" y1="85" x2="368" y2="85"/>
+    <line x1="520" y1="85" x2="548" y2="85"/><line x1="700" y1="85" x2="728" y2="85"/>
+  </g>
+  <g fill="#1d2433" text-anchor="middle" font-size="14" font-weight="600">
+    <text x="85" y="66">1. Drift signal</text><text x="265" y="66">2. Vol targeting</text>
+    <text x="445" y="66">3. Seasonal scale</text><text x="625" y="66">4. Portfolio</text><text x="810" y="66">5. Regime gate</text>
+  </g>
+  <g fill="#333" text-anchor="middle" font-size="12">
+    <text x="85" y="88">60-day mu, sigma</text><text x="85" y="104">hold if mu - sigma²/2 &gt; 0</text><text x="85" y="120">decide each month-end</text>
+    <text x="265" y="88">size = min(0.40 / vol45, 1)</text><text x="265" y="104">no leverage, no shorts</text>
+    <text x="445" y="88">Mar, Jul, Nov: scale up</text><text x="445" y="104">(Core3, capped at 1.0)</text>
+    <text x="625" y="88">inverse-variance weights</text><text x="625" y="104">{BTC, ETH} and other coins</text><text x="625" y="120">rebalanced monthly</text>
+    <text x="810" y="88">BTC below its 140-160-day</text><text x="810" y="104">moving average at last</text><text x="810" y="120">month-end: go to cash</text>
+  </g>
+  <text x="450" y="22" text-anchor="middle" font-size="13" fill="#555">daily prices (per coin) → steps 1 to 3 → portfolio → gate → monthly return (1% fee, signal shifted by one day)</text>
+  <text x="450" y="170" text-anchor="middle" font-size="12" fill="#555">Functions: sig_vol_targeting, _apply_seasonal_scalar, hierarchical inverse-variance weights and apply_ma_gate (inside portfolio_v58_*)</text>
+</svg>
