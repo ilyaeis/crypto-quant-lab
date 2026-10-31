@@ -24,7 +24,7 @@ warnings.filterwarnings('ignore')
 COMMISSION = 0.01
 INITIAL_CAPITAL = 10000.0
 DATA_PERIOD = '5y'
-OUT_DIR = '/home/ilja/Desktop'
+OUT_DIR = 'results/figures'
 HOURS_PER_YEAR = 8760
 
 

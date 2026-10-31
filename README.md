@@ -6,6 +6,8 @@ A backtesting study of simple trading rules for crypto coins. The question is:
 The study grew over 59 numbered versions (v1 to v59) in one Python script, from spring 2026.
 It starts with single-coin rules on BTC and ETH, and ends with a 6-coin portfolio.
 
+![Returns of every single-coin rule, BTC vs ETH (fresh run)](results/figures/strategy_comparison.png)
+
 > The original source file was lost. This repository holds source that was **recovered from the
 > compiled `.pyc` file** and checked against it. See [How the code was recovered](#how-the-code-was-recovered).
 
@@ -17,6 +19,8 @@ It starts with single-coin rules on BTC and ETH, and ends with a 6-coin portfoli
 - No price data is stored in this repository. `run.py` downloads it and caches it in `data/cache/`.
 
 ## Methods
+
+![Signal pipeline: drift, volatility targeting, seasonal scale, portfolio, regime gate](docs/signal_pipeline.svg)
 
 - **Drift signal.** Over a rolling window (usually 60 days), compute the log-return mean `mu` and
   standard deviation `sigma`. The GBM drift is `mu - sigma^2 / 2`. Hold the coin when the drift is
@@ -64,8 +68,6 @@ returned +32.4% on BTC and +82.1% on ETH. Buy-and-hold returned +23.8% and -48.3
 
 **Intraday:** all tested rules on 5-minute and 1-hour bars lost money after fees (e.g. average Sharpe
 -0.6 to -1.8 on 1-hour bars). The study dropped this direction.
-
-![Returns of every single-coin rule, BTC vs ETH](results/figures/strategy_comparison.png)
 
 ![BTC price, equity curves, drawdown and return distribution](results/figures/btc_strategies.png)
 
@@ -117,7 +119,7 @@ What could not be recovered:
   that compiles to the same constant.
 
 No logic was added or changed. One setting is overridden at run time and not in the file:
-`OUT_DIR` points to the author's Desktop, so `run.py` sends plots to `results/figures/` instead.
+`OUT_DIR` in the recovered file was the author's Desktop path. That path was replaced with `results/figures` in this repository, so the setting now matches what `run.py` uses. This one constant now differs from the `.pyc`.
 
 ## Reproduce
 
@@ -151,3 +153,5 @@ diff /tmp/cmp/orig.txt /tmp/cmp/src.txt       # only the plot folder path differ
 ## License
 
 MIT, see [LICENSE](LICENSE).
+
+Part of my portfolio: https://ilyaeis.github.io/
